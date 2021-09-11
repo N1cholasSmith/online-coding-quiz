@@ -1,0 +1,25 @@
+1. Page loads with highscores
+    - highscores = JSON.parse(localStorage.getItem(“highscores”));
+2. Page loads quetions
+    - questions= JSON.parse(localStorage.getItem(“questions”));
+3. start button pressed
+    - timer begins to countdown [function setTime()]
+    - first question is displayed as a list [ function currentQuestion()]
+4. correct answer
+    - check answer function
+    - score adjusted
+        - 1000
+5. wrong answer
+    - 10sec penalty
+    - score reduced
+        - 500
+6. Presented with another question
+    - 
+7. Game is over when:
+    - all questions answered
+    - time stops
+8. score is displayed
+    - prompt
+9. score saved into localStorage
+    - localStorage.setItem(“highscores”, JSON.stringify(highscore));
+10. scores are present when returning to the Page
