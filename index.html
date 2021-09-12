@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
@@ -16,63 +17,70 @@
 
     <!-- JS files -->
     <script src="assets/js/script.js" defer></script>
-  </head>
+</head>
 
-  <body>
-      <header>
-            <nav>
-                <ol class="Highscores">
-                    <li>
-                        <!-- should I make this a header? -->
-                        <h2>Highscores</h2>
-                    </li>
-                    <li>
-                        <a href="" >1. Nick   10,000</a>
-                    </li>
-                    <li>
-                        <a href="" >2. Tom     7,500</a>
-                    </li>
-                    <li>
-                        <a href="" >3. Suzie   5,000</a>
-                    </li>
-                    <li>
-                        <a href="" >View All</a>
-                    </li>
-                </ol>
-                <h1>Coding Quiz Challenge</h1>  
-                <div class= "card-timer">
-                    <div class = "timer-text">
-                    <h2>Time Remaining</h2> 
-                    <div class = "large-font timer-count">180</div>
-                    <h2> Score </h2>
-                    <div class ="score"> 0 </div>   
+<body>
+    <header>
+        <nav>
+            <ol class="Highscores">
+                <li>
+                    <!-- should I make this a header? -->
+                    <h2>Highscores</h2>
+                </li>
+                <li>
+                    <a href="">1. Nick 10,000</a>
+                </li>
+                <li>
+                    <a href="">2. Tom 7,500</a>
+                </li>
+                <li>
+                    <a href="">3. Suzie 5,000</a>
+                </li>
+                <li>
+                    <a href="highscores.html" class>View Leaderboard</a>
+                </li>
+            </ol>
+            <h1>Coding Quiz Challenge</h1>
+            <div class="card-timer">
+                <div class="timer-text">
+                    <h2>Time Remaining</h2>
+                    <div class="large-font timer-count">180</div>
+                    <div class="hud">
+                        <h2 class="hud-item">
+                             Score 
+                        </h2>
+                        <p class="hud-main-text" id="score">
+                            0
+                        </p>
+                      
                     </div>
                 </div>
-            </nav>
-      </header>
-<!-- Timer Card -->
-      <main>
-          <section id="img-section"> 
-              <img src="./assets/images/ready-for-a-quiz.jpg" alt="Quiz Picture">
-          </section>
-<!-- Start Button -->
-          <section id="quiz-rules">
-              <div id="rules" >
-                  <p>
-                      Answer as many of the code-related questions within the time limit.
-                      The incorrect answers will penalize your score/time by 10Seconds!
-                  </p>
-              </div>
-              <button>
-                 
+            </div>
+        </nav>
+    </header>
+    <!-- Timer Card -->
+    <main>
+        <section id="img-section">
+            <img src="./assets/images/ready-for-a-quiz.jpg" alt="Quiz Picture">
+        </section>
+        <!-- Start Button -->
+        <section id="quiz-rules">
+            <div id="rules">
+                <p>
+                    Answer as many of the code-related questions within the time limit.
+                    The incorrect answers will penalize your score/time by 10Seconds!
+                </p>
+            </div>
+            <button>
+
                 <a id="startButton">Start Quiz</a>
-              </button>
-          </section>
-<!-- Questions -->
-          <section id="quiz">
+            </button>
+        </section>
+        <!-- Questions -->
+        <section id="quiz">
             <p id="question"></p>
             <ul>
-                <li > 
+                <li>
                     <button id="answer1"></button>
                 </li>
                 <li>
@@ -85,13 +93,21 @@
                     <button id="answer4"></button>
                 </li>
             </ul>
-          </section>
+        </section>
+        <section id="allDone" class = "hidden">
+            <h3>All done!</h3>
+            <div id = "userInfo">
+                <label id="initials"> Enter initials to view score!<input type = "text" placeholder="Inital here"></label>
+                <p id="finalScore"></p>
+                <input type="submit" value="Submit" id="submit"/>
+            </div>
+        </section>
+    </main>
 
-      </main>
 
 
 
 
+</body>
 
-  </body>
 </html>

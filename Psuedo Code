@@ -23,3 +23,30 @@
 9. score saved into localStorage
     - localStorage.setItem(“highscores”, JSON.stringify(highscore));
 10. scores are present when returning to the Page
+
+Todo list
+0. lock/hide start button
+1. scores
+2. last question logs localStorage
+        - promt with score
+        - save to highscore
+3. when time runs out prompt
+4. parse the score/names to the Page
+
+lastquestion.addeventlistener(click)
+
+
+
+
+function updateQuestion() {
+    currentQuestion++;
+    if (currentQuestion < questionArray.length) {
+        renderQuestion();
+    } else {
+        setTimerToZero();
+        displayResult();
+    }
+}
+
+questionSectionDisplay.style.display = "none";
+resultSectionDisplay.style.display = "block";

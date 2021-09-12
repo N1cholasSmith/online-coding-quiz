@@ -52,8 +52,8 @@ main {
 }
 
 img {
-    width: 600px;
-    height: auto;
+    width: 70%;
+    height: 400px;
 }
 
 #rules p {
@@ -62,6 +62,7 @@ img {
     align-content: center;
     font-size: 20px;
     width:600px;
+    padding: 20px;
 }
 
 #quiz-rules {

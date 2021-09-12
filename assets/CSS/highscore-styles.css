@@ -1,0 +1,64 @@
+header {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 60px;
+    color: azure;
+    padding: 20px;
+    align-items: center;
+    background-color: #3d768a;
+}
+
+#online-coding-quiz {
+    font-size: 35px;
+}
+
+#highscore {
+   
+    justify-content: flex-start;
+    flex-direction: column;
+    font-size: 24px;
+    padding: 20px;
+    margin-left: 100px;
+}
+
+p {
+    padding: 15px;
+}
+
+.highscorebuttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+button {
+display: flex;
+flex-direction: row;
+
+}
+
+.Button {
+	box-shadow: 0px 10px 14px -7px #276873;
+	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	background-color:#599bb3;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+	padding:13px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
+}
+.Button:hover {
+	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background-color:#408c99;
+}
+.Button:active {
+	position:relative;
+	top:1px;
+}
+
+

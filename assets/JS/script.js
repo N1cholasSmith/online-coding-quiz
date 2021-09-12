@@ -1,4 +1,6 @@
 
+
+
 // Timer ------------------------------------------------------------------------------------------------------------------
 
 var timeEl = document.querySelector(".timer-count");
@@ -10,41 +12,31 @@ var startButton = document.getElementById("startButton")
 // add an event listener for the click to start the timer?---------------
 function setTime () {
 
-    var timerInterval = setInterval(function() {
+  var timerInterval = setInterval(function() {
         secondsLeft--;
         timeEl.textContent = secondsLeft;
 
         if (secondsLeft === 0) {
         clearInterval(timerInterval);
         }
-    }, 1000);
+  }, 1000);
     
   
 }
 
 // --Score-------------------------------------------------------------------------------------
 
-var scoreEl = document.querySelector(".score");
-var headerEl = document.querySelector("header")
+var scoreEl = document.querySelector("#score");
+var headerEl = document.querySelector("main");
 var score = 0;
 
-// var startButton = document.getElementById("startButton")
+var score_points = 1000;
 
-// add an event listener for the click to start the timer?---------------
-function setScore () {
+incrementScore = num => {
+  score +=num
+  scoreText.innertext = score
 
-    var quizScore = setScore(function() {
-        score--;
-        scoreEl.textContent = score;
-
-        if (correctAnswer = true) {
-        clearInterval(quizScore);
-        }
-    }, 1000);
-    
-  
 }
-
 
 // Quiz Questions---------------------------------------------------------------------------------------------------------------------
 var questionEl = document.getElementById("question");
@@ -82,18 +74,31 @@ var questions = [
         d: "ESLint"
       },
       correctAnswer: "d"
-    
+
+
 }];
 
-// how do i link the answers up?
+
 function updateQuestion() {
-  console.log("helloquestionupdate")
+  console.log("QUESTION")
+    rules.setAttribute("class", "hidden");
+    quiz.removeAttribute("class");
     var currentQuestion = questions[currentQuestionIndex];
 
     if (!currentQuestion) {
       console.log('quiz done')
-      return;
+      // localStorage.setItem("mostRecentScore", score)
+      // return window.location.assign("highscores.html")----------------------------------- prompt or submit button
     }
+
+    // if (currentQuestionIndex = questions.length) {
+    //   endQuiz()
+    // }
+
+    // if (secondsLeft === 0) {
+    //   endQuiz()
+    // }
+  
       // a,b,c is the keys for the answers object
     questionEl.textContent = currentQuestion.question;
     answer1El.textContent = currentQuestion.answers.a;
@@ -106,18 +111,18 @@ function updateQuestion() {
 function checkAnswer(clickedAnswer){
     var currentQuestion = questions[currentQuestionIndex];
 
-    // if (!currentQuestion) {
-    //   return;
-    // }
-
     if (currentQuestion.correctAnswer === clickedAnswer) {
       console.log("correct Answer");
-      score += 1000;
+      console.log("score +1000")
+      score += 1000
+      scoreEl.textContent = score;
     }
     else {
       console.log("wrong answer");
+      console.log("score -500")
       secondsLeft-= 10;
       score -= 500;
+      scoreEl.textContent = score;
     }
     if (!currentQuestion) {
       return;
@@ -135,10 +140,127 @@ answer2El.addEventListener("click", function (){
 answer3El.addEventListener("click", function (){
     checkAnswer("c");
 });
+answer3El.addEventListener("click", function (){
+  checkAnswer("d");
+});
+
+function endQuiz() {
+  rules.setAttribute("class", "hidden");
+  quiz.removeAttribute("class");
+
+  console.log("end Quiz")
+  
+}
+
+// -SUBMIT BUTTON/STORE HIGHSCORE---------------------------------------------------------
+// var initials = document.querySelector("#initials");
+// var finalscore = document.querySelector("#finalScore");
+// var submit = document.querySelector("#submit");
+// var todoCountSpan = document.querySelector("#todo-count");
+
+// var highscore = [];
+
+// submitButton.addEventListener("click", function (event) {
+//   event.preventDefault();
+
+//   var intials = document.querySelector("#intials").value;
+
+//   if (initials === "") {
+//     renderMessage("Initials cannot be left blank");
+//   } else {
+//     var highscoreObj = {
+//       initials: initials,
+//       score: finalScore
+//     }
 
 
+//     highscoreList.push(highscoreObj);
 
+//     localStorage.setItem("HighscoreList", JSON.stringify(highscoreList));
+//     window.location.href = "highscores.html";
+//   }
+// });
 
+// // ----RENDER HIGHSCORES to HIGHSCORE.HTML--------------------------------------
+
+// function renderTodos() {
+//   // Clear todoList element and update todoCountSpan
+//   todoList.innerHTML = "";
+//   todoCountSpan.textContent = todos.length;
+
+//   // Render a new li for each todo
+//   for (var i = 0; i < todos.length; i++) {
+//     var todo = todos[i];
+
+//     var li = document.createElement("li");
+//     li.textContent = todo;
+//     li.setAttribute("data-index", i);
+
+//     var button = document.createElement("button");
+//     button.textContent = "Complete ✔️";
+
+//     li.appendChild(button);
+//     todoList.appendChild(li);
+//   }
+// }
+
+// // This function is being called below and will run when the page loads.
+// function init() {
+//   // Get stored todos from localStorage
+//   var storedTodos = JSON.parse(localStorage.getItem("todos"));
+
+//   // If todos were retrieved from localStorage, update the todos array to it
+//   if (storedTodos !== null) {
+//     todos = storedTodos;
+//   }
+
+//   // This is a helper function that will render todos to the DOM
+//   renderTodos();
+// }
+
+// function storeTodos() {
+//   // Stringify and set key in localStorage to todos array
+//   localStorage.setItem("todos", JSON.stringify(todos));
+// }
+
+// // Add submit event to form
+// todoForm.addEventListener("submit", function(event) {
+//   event.preventDefault();
+
+//   var todoText = todoInput.value.trim();
+
+//   // Return from function early if submitted todoText is blank
+//   if (todoText === "") {
+//     return;
+//   }
+
+//   // Add new todoText to todos array, clear the input
+//   todos.push(todoText);
+//   todoInput.value = "";
+
+//   // Store updated todos in localStorage, re-render the list
+//   storeTodos();
+//   renderTodos();
+// });
+
+// // Add click event to todoList element
+// todoList.addEventListener("click", function(event) {
+//   var element = event.target;
+
+//   // Checks if element is a button
+//   if (element.matches("button") === true) {
+//     // Get its data-index value and remove the todo element from the list
+//     var index = element.parentElement.getAttribute("data-index");
+//     todos.splice(index, 1);
+
+//     // Store updated todos in localStorage, re-render the list
+//     storeTodos();
+//     renderTodos();
+//   }
+// });
+
+// // Calls init to retrieve data and render it to the page on load
+// init()
 
 
 // hide button after "click" with fuction, (, setTime, hidebutton, updatequestion)
