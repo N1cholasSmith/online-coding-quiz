@@ -50,3 +50,15 @@ function updateQuestion() {
     }
 }
 
+function endGame() {
+    main.classList.toggle("hidden");
+    finalScore.classList.toggle("hidden");
+    scoreSp.innerText = points;
+  }
+
+  currentQuestionIndex++;
+  if (currentQuestionIndex < questions.length) {
+    updateQuestion();
+  } else {
+    endGame();
+  }

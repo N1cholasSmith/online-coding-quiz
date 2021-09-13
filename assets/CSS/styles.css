@@ -118,3 +118,39 @@ button {
     font-size: 25px;
     padding: 15px
 }
+
+#allDone {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-size: 50px;
+}
+
+#userInfo {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#initials {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-size: 20px;
+}
+
+#submit {
+    font-size: 20px;
+}
+
+h3 {
+    display: flex;
+    justify-content: center;
+}
+
+.hidden {
+    display: none;
+}

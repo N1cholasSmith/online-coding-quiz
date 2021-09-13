@@ -17,6 +17,7 @@
 
     <!-- JS files -->
     <script src="assets/js/script.js" defer></script>
+
 </head>
 
 <body>
@@ -44,7 +45,7 @@
             <div class="card-timer">
                 <div class="timer-text">
                     <h2>Time Remaining</h2>
-                    <div class="large-font timer-count">180</div>
+                    <div class="large-font timer-count">30</div>
                     <div class="hud">
                         <h2 class="hud-item">
                              Score 
@@ -63,7 +64,7 @@
         <section id="img-section">
             <img src="./assets/images/ready-for-a-quiz.jpg" alt="Quiz Picture">
         </section>
-        <!-- Start Button -->
+        <!-- Start Button -------------------------------------------------------------->
         <section id="quiz-rules">
             <div id="rules">
                 <p>
@@ -76,8 +77,8 @@
                 <a id="startButton">Start Quiz</a>
             </button>
         </section>
-        <!-- Questions -->
-        <section id="quiz">
+        <!-- Questions ----------------------------------------------------------------->
+        <section id="quiz" class="hidden">
             <p id="question"></p>
             <ul>
                 <li>
@@ -92,17 +93,17 @@
                 <li>
                     <button id="answer4"></button>
                 </li>
-                <li>
-                    <button id="answer5"></button>
-                </li>
             </ul>
         </section>
-        <section id="allDone" class = "hidden">
+        <!-- SUBMIT SECTION ----------------------------------------------------------->
+        <section id="allDone" class ="hidden">
             <h3>All done!</h3>
             <div id = "userInfo">
+
                 <label id="initials"> Enter initials to view score!<input type = "text" placeholder="Inital here"></label>
                 <p id="finalScore"></p>
                 <input type="submit" value="Submit" id="submit"/>
+
             </div>
         </section>
     </main>
