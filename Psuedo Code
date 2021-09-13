@@ -36,6 +36,8 @@ Todo list
 lastquestion.addeventlistener(click)
 
 
+-- if current question index is greater then or equal too length of my question.length then hide quesition/quiz and show score input
+-- else i want to display the next question
 
 
 function updateQuestion() {
@@ -48,5 +50,3 @@ function updateQuestion() {
     }
 }
 
-questionSectionDisplay.style.display = "none";
-resultSectionDisplay.style.display = "block";

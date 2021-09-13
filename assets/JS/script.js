@@ -44,8 +44,8 @@ var answer1El = document.getElementById("answer1");
 var answer2El = document.getElementById("answer2");
 var answer3El = document.getElementById("answer3");
 var answer4El = document.getElementById("answer4");
+var answer5El = document.getElementById("answer5");
 var currentQuestionIndex = 0;
-
 var questions = [
     {
       question: "Who invented JavaScript?",
@@ -74,23 +74,28 @@ var questions = [
         d: "ESLint"
       },
       correctAnswer: "d"
-
-
+    },
+    {
+    question: "You have completed the Quiz please enter details below",
+    answers: {
+        z: "Submit Score"
+    }
 }];
 
 
 function updateQuestion() {
   console.log("QUESTION")
-    rules.setAttribute("class", "hidden");
-    quiz.removeAttribute("class");
-    var currentQuestion = questions[currentQuestionIndex];
-
+  console.log("current question index: ",currentQuestionIndex)
+  var currentQuestion = questions[currentQuestionIndex];
+    
     if (!currentQuestion) {
       console.log('quiz done')
       // localStorage.setItem("mostRecentScore", score)
       // return window.location.assign("highscores.html")----------------------------------- prompt or submit button
     }
-
+    // else {
+    //   endQuiz()
+    // }
     // if (currentQuestionIndex = questions.length) {
     //   endQuiz()
     // }
@@ -105,30 +110,41 @@ function updateQuestion() {
     answer2El.textContent = currentQuestion.answers.b;
     answer3El.textContent = currentQuestion.answers.c;
     answer4El.textContent = currentQuestion.answers.d;
+    answer5El.textContent = currentQuestion.answers.z;
 }
 
 
 function checkAnswer(clickedAnswer){
     var currentQuestion = questions[currentQuestionIndex];
 
-    if (currentQuestion.correctAnswer === clickedAnswer) {
-      console.log("correct Answer");
-      console.log("score +1000")
-      score += 1000
-      scoreEl.textContent = score;
-    }
-    else {
-      console.log("wrong answer");
-      console.log("score -500")
-      secondsLeft-= 10;
-      score -= 500;
-      scoreEl.textContent = score;
-    }
-    if (!currentQuestion) {
-      return;
-    }
-    currentQuestionIndex++;
-    updateQuestion();
+    if (currentQuestionIndex >= questions.length) {
+      //quiz is over
+      // hide        questionSectionDisplay.style.display = "none";
+      // display     resultSectionDisplay.style.display = "block";
+      
+
+
+    } else {
+      currentQuestionIndex++;
+      if (currentQuestion.correctAnswer === clickedAnswer) {
+        console.log("correct Answer");
+        console.log("score +1000")
+        score += 1000
+        scoreEl.textContent = score;
+      }
+      else {
+        console.log("wrong answer");
+        console.log("score -500")
+        secondsLeft-= 10;
+        score -= 500;
+        scoreEl.textContent = score;
+      }
+      if (!currentQuestion) {
+        return;
+      }
+      updateQuestion();
+    } 
+
 }
 
 answer1El.addEventListener("click", function (){
@@ -140,7 +156,10 @@ answer2El.addEventListener("click", function (){
 answer3El.addEventListener("click", function (){
     checkAnswer("c");
 });
-answer3El.addEventListener("click", function (){
+answer4El.addEventListener("click", function (){
+  checkAnswer("d");
+});
+answer5El.addEventListener("click", function (){
   checkAnswer("d");
 });
 
