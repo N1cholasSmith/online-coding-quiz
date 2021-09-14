@@ -1,7 +1,9 @@
 //grab information from localStorage
 var storedScores = JSON.parse(localStorage.getItem("scores"))
-
-
+var highscoreObj = {
+    initials: initials,
+    score: finalScore
+}
 //{name:"bob", score:1000}
 highscoreObj
 

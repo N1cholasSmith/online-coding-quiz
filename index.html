@@ -16,8 +16,6 @@
     <link rel="stylesheet" href="assets/css/styles.css" />
 
     <!-- JS files -->
-    <script src="assets/js/script.js" defer></script>
-
 </head>
 
 <body>
@@ -71,14 +69,16 @@
                     Answer as many of the code-related questions within the time limit.
                     The incorrect answers will penalize your score/time by 10Seconds!
                 </p>
+                <button id="startButton">
+                    Start Quiz
+               </button>
             </div>
-            <button>
-
-                <a id="startButton">Start Quiz</a>
-            </button>
+            <!-- <button id="startButton">
+                 Start Quiz
+            </button> -->
         </section>
         <!-- Questions ----------------------------------------------------------------->
-        <section id="quiz" class="hidden">
+        <div id="quiz" >
             <p id="question"></p>
             <ul>
                 <li>
@@ -94,15 +94,15 @@
                     <button id="answer4"></button>
                 </li>
             </ul>
-        </section>
+        </div>
         <!-- SUBMIT SECTION ----------------------------------------------------------->
         <section id="allDone" class ="hidden">
             <h3>All done!</h3>
             <div id = "userInfo">
 
-                <label id="initials"> Enter initials to view score!<input type = "text" placeholder="Inital here"></label>
-                <p id="finalScore"></p>
-                <input type="submit" value="Submit" id="submit"/>
+                <label > Enter initials to join the Highscore Leaderboard </label>
+                    <input id="initials" type = "text" placeholder="Inital here">
+                <button type="submit" id="submit"> SUBMIT!</button>
 
             </div>
         </section>
@@ -111,7 +111,6 @@
 
 
 
-
+    <script src="assets/js/script.js"></script>
 </body>
-
 </html>

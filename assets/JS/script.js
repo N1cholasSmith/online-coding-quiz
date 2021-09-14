@@ -1,5 +1,7 @@
-
-
+// need to stop time when last question answered,
+// submit to localstorage
+// parse
+allDone.setAttribute("class", "hidden");
 
 // Timer ------------------------------------------------------------------------------------------------------------------
 
@@ -8,11 +10,11 @@ var mainEl = document.querySelector("main")
 
 var secondsLeft = 30;
 var startButton = document.getElementById("startButton")
-
+var timerInterval 
 // add an event listener for the click to start the timer?---------------
 function setTime () {
 
-  var timerInterval = setInterval(function() {
+  timerInterval = setInterval(function() {
         secondsLeft--;
         timeEl.textContent = secondsLeft;
 
@@ -29,7 +31,7 @@ function setTime () {
 var scoreEl = document.querySelector("#score");
 var headerEl = document.querySelector("main");
 var score = 0;
-
+var finalScore = score;
 var score_points = 1000;
 
 incrementScore = num => {
@@ -75,12 +77,9 @@ var questions = [
         d: "ESLint"
       },
       correctAnswer: "d"
-    },
-    {
-
 }];
 
-
+// UPDATE QUESTION----------------------------------------------------------------------------------------
 function updateQuestion() {
   console.log("QUESTION")
   console.log("current question index: ",currentQuestionIndex)
@@ -90,11 +89,6 @@ function updateQuestion() {
       console.log('quiz done')
       endQuiz();
     }
-    // if (currentQuestionIndex >= questions.length) {
-    //   endQuiz();
-    // }
-    currentQuestionIndex++;
-  
   
     questionEl.textContent = currentQuestion.question;
     answer1El.textContent = currentQuestion.answers.a;
@@ -103,15 +97,12 @@ function updateQuestion() {
     answer4El.textContent = currentQuestion.answers.d;
 }
 
-
+// CHECK QUESTION------------------------------------------------------------------------------------------
 function checkAnswer(clickedAnswer){
   var currentQuestion = questions[currentQuestionIndex];
   // currentQuestionIndex++;
   
-    if (currentQuestionIndex >= questions.length) {
-      endQuiz();
-
-    } else {
+    
       if (currentQuestion.correctAnswer === clickedAnswer) {
         console.log("correct Answer");
         console.log("score +1000")
@@ -128,6 +119,10 @@ function checkAnswer(clickedAnswer){
       if (!currentQuestion) {
         return;
       }
+      currentQuestionIndex++;
+      if (currentQuestionIndex >= questions.length) {
+        endQuiz();
+      } else {
       updateQuestion();
     } 
 
@@ -151,30 +146,29 @@ answer4El.addEventListener("click", function (){
 // document.getElementById("quiz").style.display= "none";
 
 function endQuiz() {
-  rules.setAttribute("class", "hidden");
-  quiz.removeAttribute("class", "hidden");
-  allDone
-
-  console.log("end Quiz")
+ 
+  clearInterval(timerInterval);
+  console.log("endquiz")
+  allDone.removeAttribute("class");
+  document.getElementById("quiz").setAttribute("class","hidden")
   
-  allDone.setAttribute("class", "show")
-  quiz.setAttribute("class", "hidden")
+  scoreEl.textContent = score;
+ 
 }
-
 //  SUBMIT DETAILS/STORE LOCAL STORAGE -------------------------------------------------------------------------------------------------------
 
 localStorage.getItem("score")
 localStorage.setItem("score", score)
-var highscoreList
+var highscoreList = []
 
 document.getElementById("submit").addEventListener("click", function(event){
   event.preventDefault()
-
+  console.log("submitscore")
    //1. create an object of user's name and score. {name: "bob", score: 1000}
-  var intials = document.querySelector("#intials").value;
+  var initials = document.getElementById("#initials")
 
     if (initials === "") {
-      renderMessage("Initials cannot be left blank");
+      // renderMessage("Initials cannot be left blank");
     } else {
       var highscoreObj = {
         initials: initials,
@@ -195,4 +189,5 @@ startButton.addEventListener("click", function(){
   setTime()
   updateQuestion()
   rules.setAttribute("class", "hidden");
-});
+  // startButton.setAttribute("class", "hidden")
+})
