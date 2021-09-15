@@ -1,7 +1,7 @@
 // need to stop time when last question answered,
 // submit to localstorage
 // parse
-allDone.setAttribute("class", "hidden");
+
 
 // Timer ------------------------------------------------------------------------------------------------------------------
 
@@ -65,6 +65,7 @@ var questions = [
         a: "Node.js",
         b: "TypeScript",
         c: "npm"
+
       },
       correctAnswer: "c"
     },
@@ -151,7 +152,6 @@ function endQuiz() {
   console.log("endquiz")
   allDone.removeAttribute("class");
   document.getElementById("quiz").setAttribute("class","hidden")
-  
   scoreEl.textContent = score;
  
 }
@@ -165,14 +165,14 @@ document.getElementById("submit").addEventListener("click", function(event){
   event.preventDefault()
   console.log("submitscore")
    //1. create an object of user's name and score. {name: "bob", score: 1000}
-  var initials = document.getElementById("#initials")
+  var initials = document.getElementById("initials").value
 
     if (initials === "") {
-      // renderMessage("Initials cannot be left blank");
+      alert("Initials cannot be left blank");
     } else {
       var highscoreObj = {
         initials: initials,
-        score: finalScore
+        finalScore: score
       }
       //2. stick in localStorage under key "score"
       highscoreList.push(highscoreObj);

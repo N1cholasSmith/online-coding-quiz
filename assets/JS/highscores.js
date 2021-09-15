@@ -1,11 +1,11 @@
 //grab information from localStorage
-var storedScores = JSON.parse(localStorage.getItem("scores"))
+var highscoreList = []
 var highscoreObj = {
     initials: initials,
-    score: finalScore
+    finalScore: score
 }
+var storedScores = JSON.parse(localStorage.getItem(highscoreList))
 //{name:"bob", score:1000}
-highscoreObj
 
 var paragraph = document.createElement("p")
 

@@ -104,7 +104,7 @@ button {
 	position:relative;
 	top:1px;
 }
-#quiz {
+quiz {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -119,7 +119,7 @@ button {
     padding: 15px
 }
 
-#allDone {
+.allDone {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -154,3 +154,4 @@ h3 {
 .hidden {
     display: none;
 }
+
