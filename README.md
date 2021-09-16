@@ -10,7 +10,7 @@
 The Online Coding Quiz is a multiple choice questionaire which dynamically updates with fluid JavaScript coding. This quiz is designed to test the furtherest reaches of your javascript knowledge. However, in the face of adversity this quiz can be conquered. This has taught me hot to use DOM elements, functions and how to dynamically update HTML and CSS using Javascript. This was a very challengening project however i learnt a lot
 
 
-[onlinecodingquiz.com](https://github.com/N1cholasSmith/online-coding-quiz)
+[onlinecodingquiz.com](https://n1cholassmith.github.io/online-coding-quiz/)
 
 ---
 ## Table of Contents
