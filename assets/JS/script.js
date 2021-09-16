@@ -180,11 +180,11 @@ document.getElementById("submit").addEventListener("click", function(event){
 
 // ----- Highscore PARSE---------------------------------------------------------------------------------------
 var highscoreList = JSON.parse(localStorage.getItem("HighscoreList"))
-if (!highscoreList) { 
+  if (!highscoreList) { 
   highscoreList = []
-}
+  }
 
-for (let i = 0; i < highscoreList.length; i++) {
+  for (let i = 0; i < highscoreList.length; i++) {
     var paragraph = document.createElement("p")
     paragraph.textContent = highscoreList[i].initials + "         " + highscoreList[i].finalScore
     document.getElementById("Highscores").append(paragraph)
