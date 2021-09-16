@@ -180,6 +180,9 @@ document.getElementById("submit").addEventListener("click", function(event){
 
 // ----- Highscore PARSE---------------------------------------------------------------------------------------
 var highscoreList = JSON.parse(localStorage.getItem("HighscoreList"))
+if (!highscoreList) { 
+  highscoreList = []
+}
 
 for (let i = 0; i < highscoreList.length; i++) {
     var paragraph = document.createElement("p")
