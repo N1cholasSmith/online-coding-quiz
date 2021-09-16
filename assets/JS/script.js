@@ -1,7 +1,3 @@
-// need to stop time when last question answered,
-// submit to localstorage
-// parse
-
 
 // Timer ------------------------------------------------------------------------------------------------------------------
 
@@ -101,9 +97,7 @@ function updateQuestion() {
 // CHECK QUESTION------------------------------------------------------------------------------------------
 function checkAnswer(clickedAnswer){
   var currentQuestion = questions[currentQuestionIndex];
-  // currentQuestionIndex++;
-  
-    
+
       if (currentQuestion.correctAnswer === clickedAnswer) {
         console.log("correct Answer");
         console.log("score +1000")
@@ -143,8 +137,6 @@ answer4El.addEventListener("click", function (){
 });
 
 //  END QUIZ ----------------------------------------------------------------------------------------------------------------------------
-// document.getElementById("rules").style.display="none";
-// document.getElementById("quiz").style.display= "none";
 
 function endQuiz() {
  
@@ -153,8 +145,11 @@ function endQuiz() {
   allDone.removeAttribute("class");
   document.getElementById("quiz").setAttribute("class","hidden")
   scoreEl.textContent = score;
- 
+  secondsLeft = 0;
+  timeEl.textContent = secondsLeft;
+  
 }
+
 //  SUBMIT DETAILS/STORE LOCAL STORAGE -------------------------------------------------------------------------------------------------------
 
 localStorage.getItem("score")
@@ -164,7 +159,7 @@ var highscoreList = []
 document.getElementById("submit").addEventListener("click", function(event){
   event.preventDefault()
   console.log("submitscore")
-   //1. create an object of user's name and score. {name: "bob", score: 1000}
+   
   var initials = document.getElementById("initials").value
 
     if (initials === "") {
@@ -174,20 +169,27 @@ document.getElementById("submit").addEventListener("click", function(event){
         initials: initials,
         finalScore: score
       }
-      //2. stick in localStorage under key "score"
+    
       highscoreList.push(highscoreObj);
   
-      //3. window.location.href = "highscores.html";
+      
       localStorage.setItem("HighscoreList", JSON.stringify(highscoreList));
       window.location.href = "highscores.html";
     }
 });
 
+// ----- Highscore PARSE---------------------------------------------------------------------------------------
+var highscoreList = JSON.parse(localStorage.getItem("HighscoreList"))
 
-// hide button after "click" with fuction, (, setTime, hidebutton, updatequestion)
+for (let i = 0; i < highscoreList.length; i++) {
+    var paragraph = document.createElement("p")
+    paragraph.textContent = highscoreList[i].initials + "         " + highscoreList[i].finalScore
+    document.getElementById("Highscores").append(paragraph)
+}
+
+// ------ Start Button Event Listener ---------------------------------------------------------------
 startButton.addEventListener("click", function(){ 
   setTime()
   updateQuestion()
   rules.setAttribute("class", "hidden");
-  // startButton.setAttribute("class", "hidden")
 })
